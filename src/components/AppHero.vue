@@ -1,12 +1,22 @@
 <script>
   export default {
-    name: 'AppHero'
+    name: 'AppHero',
+    data(){
+      return{
+        imgSrc: 'jumbo.png'
+      }
+    },
+    methods:{
+      getImgSrc(img){
+        return new URL(`../assets/img/${img}`, import.meta.url).href;
+      }
+    }
   }
 </script>
 
 <template>
   <div id="jumbotron">
-    <img src="../assets/jumbo.png" alt="Jumbotron">
+    <img :src="getImgSrc(imgSrc)" alt="Jumbotron">
   </div>
 </template>
 
@@ -15,10 +25,5 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  #jubotron{
-    width: 500px;
-    height: 500px;
   }
 </style>
